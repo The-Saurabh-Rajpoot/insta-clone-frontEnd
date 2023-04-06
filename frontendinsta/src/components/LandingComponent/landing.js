@@ -15,7 +15,7 @@ export default function LandingPage(){
              <Card.Body className="card-body-container">
                 <div className="card-body">
                 <Card.Title style={{ color: '#006238',opacity: '1' }}>10x Team 04</Card.Title>
-                 <Link to={"new"}><Button id="enter" variant="primary">Enter</Button></Link>
+                 <Link to={"post/list"}><Button id="enter" variant="primary">Enter</Button></Link>
                 </div>
                 
                </Card.Body>

@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Link } from "react-router-dom";
-import camera from "../../../images/camera.png";
-import Logo from "../../../images/icon (1).svg"
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useContext, useState } from "react";
 import "./newpost.css"
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
+import Header from "../header/header";
+import {addNewPost} from "../../../services/http-services.js"
+import { useNavigate } from "react-router-dom";
+import { postList } from "../../contexts/postcontext";
 export default function NewPost() {
+    const listNavigation=useNavigate();
+    
     const [formData,SetFormData]=useState({
         image:null,
         author:"",
@@ -20,22 +20,24 @@ export default function NewPost() {
     function captureForm(event){
         event.preventDefault()
         const formValues= new FormData(event.target);
+        formValues.append("data", new Date().toDateString());
+        formValues.append("like", 0);
+        formValues.append("id", new Date().getTime());
+        addNewPost(formValues).then(res=>{
+            addNewPost(res.data);
+            SetFormData({
+                image:null,
+        author:"",
+        location:"",
+        description:""
+            });
+            listNavigation("post/all")
+        }).catch(err=>console.log("failed to post data"));
     }
     return (
         
         <>
-            <Navbar className="navbar-container">
-                <Container>
-                    <Navbar.Brand href="#home">
-                        <span><img src={Logo} alt="logo" /></span>
-                        <span>Instaclone</span>
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <img src={camera} alt="camra logo" />
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            <Header />
             <div className="newpost-card-container">
                 <Card style={{ width: '30rem' }}>
                    
