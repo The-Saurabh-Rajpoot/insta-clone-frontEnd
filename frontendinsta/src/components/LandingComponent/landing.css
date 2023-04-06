@@ -1,0 +1,32 @@
+.landing-page-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: 0px white !important;
+  }
+  
+
+.home-content{
+   display: flex !important;
+   flex-wrap: nowrap !important;
+   flex-direction: row !important;
+   --bs-card-border-width: 0px !important;
+}
+
+  
+  .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+  }
+  #enter{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 3px solid #006238;
+border-radius: 16px;
+opacity: 1;
+color: #006238;
+  }
+  

@@ -1,0 +1,14 @@
+.navbar-container{
+    border-bottom: 2px solid green;
+}
+.newpost-card-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#post-button{
+    text-align: center;
+   margin: 10px auto;
+}
